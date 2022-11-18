@@ -28,6 +28,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 import org.apache.pdfbox.io.RandomAccessRead;
 import org.apache.pdfbox.io.RandomAccessReadBuffer;
@@ -123,7 +124,7 @@ class RandomAccessReadBufferDataStreamTest
     @Test
     void ensureReadFinishes() throws IOException
     {
-        final File file = File.createTempFile("apache-pdfbox", ".dat");
+        final File file = Files.createTempFile("apache-pdfbox", ".dat").toFile();
 
         try (OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file)))
         {
@@ -156,7 +157,7 @@ class RandomAccessReadBufferDataStreamTest
     @Test
     void testReadBuffer() throws IOException
     {
-        final File file = File.createTempFile("apache-pdfbox", ".dat");
+        final File file = Files.createTempFile("apache-pdfbox", ".dat").toFile();
 
         try (OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file)))
         {
